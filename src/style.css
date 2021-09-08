@@ -20,9 +20,13 @@
   text-decoration: none;
 }
 
+:root {
+  --main-bg-color: #fe0065;
+}
+
 body {
   font-family: 'pokemon-classic', sans-serif;
-  background-color: #ff1c1c;
+  background-color: var(--main-bg-color);
 }
 
 .nav-link {
@@ -44,4 +48,204 @@ body {
   position: sticky;
   bottom: 0;
   width: 100%;
+}
+
+.card {
+  background-color: var(--main-bg-color);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 20px;
+  border: 5px solid #000;
+}
+
+@keyframes changeBackgroundColorBlue {
+  from {
+    background-color: #1eb8ff;
+  }
+
+  to {
+    background-color: #85fce8;
+  }
+}
+
+.big-blue-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation-duration: 0.7s;
+  animation-name: changeBackgroundColorBlue;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes changeBackgroundColorRed {
+  from {
+    background-color: #ff1a1a;
+  }
+
+  to {
+    background-color: #ff9696;
+  }
+}
+
+.red-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation-duration: 0.3s;
+  animation-name: changeBackgroundColorRed;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes changeBackgroundColorYellow {
+  from {
+    background-color: #fffb1a;
+  }
+
+  to {
+    background-color: #fdf4bd;
+  }
+}
+
+.yellow-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation-duration: 0.5s;
+  animation-name: changeBackgroundColorYellow;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes changeBackgroundColorGreen {
+  from {
+    background-color: #1aff2d;
+  }
+
+  to {
+    background-color: #a7ff96;
+  }
+}
+
+.green-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation-duration: 0.9s;
+  animation-name: changeBackgroundColorGreen;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.card-header {
+  background-color: var(--main-bg-color);
+}
+
+.gray-box {
+  width: 250px;
+  height: 260px;
+  background-color: #e0e0e0;
+  border-radius: 0px 0px 0px 40px;
+  border: 5px solid #000;
+}
+
+.small-red-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation-duration: 0.3s;
+  animation-name: changeBackgroundColorRed;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.display-green {
+  width: 180px;
+  height: 180px;
+  background-color: #7ecc98;
+  border-radius: 0px;
+  border: 5px solid #000;
+}
+
+.medium-red-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  animation-duration: 0.3s;
+  animation-name: changeBackgroundColorRed;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.card-footer {
+  background-color: var(--main-bg-color);
+  border: none;
+}
+
+.name-pokemon {
+  height: 60px;
+  width: 210px;
+  background-color: #00cc5c;
+  border: solid 5px #000;
+}
+
+.gray-dark-circle-heart-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 5px solid #000;
+  background-color: #424242;
+}
+
+.heart {
+  background-color: white;
+  display: inline-block;
+  height: 20px;
+  margin: 0 6px;
+  position: relative;
+  top: 0;
+  transform: rotate(-45deg);
+  width: 20px;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: white;
+  border-radius: 50%;
+  height: 20px;
+  position: absolute;
+  width: 20px;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.heart:after {
+  left: 10px;
+  top: 0;
+}
+
+.Comments-button {
+  width: 100%;
+  height: 60px;
+  border-radius: 30px;
+  border: 5px solid #000;
+  background-color: #424242;
+  color: white;
+}
+
+.modal-content {
+  border: solid 5px #000;
+  background-color: var(--main-bg-color);
 }
