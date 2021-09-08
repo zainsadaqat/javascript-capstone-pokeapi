@@ -1,5 +1,6 @@
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
+import pokemon from './get-pokemons';
 
 const pokeballLogo = document.getElementById('pokeballLogo');
 
@@ -14,3 +15,5 @@ img.src = pokeball;
 img.alt = 'Pokeball';
 img.classList.add('pokeball-logo');
 pokeballLogo.appendChild(img);
+
+console.log(pokemon());
