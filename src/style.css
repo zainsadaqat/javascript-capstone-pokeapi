@@ -262,7 +262,7 @@ body {
 
 .pokemon-number {
   background-color: rgb(0, 170, 247);
-  border-radius: 0 40px 0px 0px;
+  border-radius: 0 40px 0 0;
   border: 5px solid #000;
 }
 
@@ -273,7 +273,8 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.page-link, .page-link:hover {
+.page-link,
+.page-link:hover {
   border: solid 5px #000;
   background-color: #424242;
   color: white;

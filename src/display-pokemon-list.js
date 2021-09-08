@@ -1,9 +1,10 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
 
-
-let offset = 1;
-let limit = 8;
+const offset = 1;
+const limit = 8;
 
 function fetchPokemon(id) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
