@@ -22,6 +22,7 @@
 
 body {
   font-family: 'pokemon-classic', sans-serif;
+  background-color: #ff1c1c;
 }
 
 .nav-link {
@@ -37,4 +38,10 @@ body {
 
 .active {
   text-decoration: underline;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
 }
