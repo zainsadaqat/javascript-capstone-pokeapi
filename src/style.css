@@ -272,3 +272,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.page-link, .page-link:hover {
+  border: solid 5px #000;
+  background-color: #424242;
+  color: white;
+}

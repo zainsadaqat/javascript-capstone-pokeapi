@@ -1,21 +1,27 @@
 const pokemonContainer = document.getElementById('pokemonContainer');
+const spinner = document.getElementById('spinner');
+
+
+let offset = 1;
+let limit = 8;
 
 function fetchPokemon(id) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then((response) => response.json())
     .then((data) => {
       createPokemon(data);
+      spinner.classList.add('d-none');
     });
 }
 
-function fetchPokemons(number) {
-  for (let i = 1; i <= number; i += 1) {
+function fetchPokemons(offset, limit) {
+  spinner.classList.add('d-none');
+  for (let i = offset; i <= offset + limit; i += 1) {
     fetchPokemon(i);
   }
 }
 
 function createPokemon(pokemon) {
-  const pokemonContainer = document.getElementById('pokemonContainer');
   pokemonContainer.innerHTML += `
   <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card">
