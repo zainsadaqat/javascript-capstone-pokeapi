@@ -249,3 +249,9 @@ body {
   border: solid 5px #000;
   background-color: var(--main-bg-color);
 }
+
+.likes-box {
+  background-color: rgb(249, 238, 96);
+  border-radius: 0 0 0 40px;
+  border: 5px solid #000;
+}
