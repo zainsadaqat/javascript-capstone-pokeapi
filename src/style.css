@@ -1,7 +1,40 @@
+@font-face {
+  font-family: 'pokemon-solid';
+  src: url('./assets/fonts/pokemon-solid.ttf') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'pokemon-classic';
+  src: url('./assets/fonts/pokemon-classic.ttf') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
+}
+
+body {
+  font-family: 'pokemon-classic', sans-serif;
+}
+
+.nav-link {
+  font-family: 'pokemon-solid', sans-serif;
+  font-size: 18px;
+  letter-spacing: 4px;
+}
+
+.pokeball-logo {
+  width: 75px;
+  height: 75px;
+}
+
+.active {
+  text-decoration: underline;
 }
