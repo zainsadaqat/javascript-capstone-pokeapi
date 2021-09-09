@@ -157,15 +157,16 @@
                       </div>
                       <div>
                         <h3 class="total-comments">Comments (2)</h3>
-                        <section class="all-comments">
-                          <p>03/01/2021 Aris: I'd love to buy it!</p>
-                          <p>04/01/2021 Zain: Thanks!</p>
-                        </section>
+                        <section class="all-comments"></section>
                       </div>
                       <div>
                         <h3 class="add-comment-heading">Add a comment</h3>
-                        <form action="#" class="form">
-                          <input type="text" placeholder="Your name" />
+                        <form action="#" class="form" id="form">
+                          <input
+                            type="text"
+                            placeholder="Your name"
+                            id="username"
+                          />
                           <textarea
                             name="comment"
                             id="comment"
@@ -173,20 +174,13 @@
                             rows="10"
                             placeholder="Your insights"
                           ></textarea>
+                          <input
+                            type="submit"
+                            value="Comment"
+                            class="btn btn-primary"
+                          />
                         </form>
                       </div>
-                    </div>
-                    <div class="modal-footer border-0">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button type="button" class="btn btn-primary">
-                        Save changes
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -197,18 +191,9 @@
       </div>
     </main>
     <footer class="bg-light">
-      <div
-        class="
-          d-flex
-          justify-content-between
-          py-4
-          my-4
-          border-top border-4
-          container
-        "
-      >
-        <p>Created by Arístides Molina and Zain Sadaqat under MIT license</p>
-      </div>
+      <p class="t-center">
+        Created by Arístides Molina and Zain Sadaqat under MIT license
+      </p>
     </footer>
 
     <script
