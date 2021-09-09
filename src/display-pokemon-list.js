@@ -59,7 +59,7 @@ function createPokemon(pokemon) {
         </div>
         <div class="d-flex justify-content-between mt-3">
           <div class="pokemon-number d-flex align-items-center ps-2 pe-3">#${pokemon.id.toString().padStart(4, 0)}</div>
-          <div class="likes-box d-flex align-items-center ps-3"><span class="pe-2" id="${pokemon.id}likesCounter"></span>Likes</div>
+          <div class="likes-box d-flex align-items-center ps-3"><span class="pe-2" id="${pokemon.id}_pokemonLikes">0</span>Likes</div>
         </div>
 
         <button type="button" class="Comments-button mt-3" data-bs-toggle="modal" data-bs-target="#commentsModal">
@@ -117,28 +117,13 @@ function createPokemon(pokemon) {
   sprite.src = pokemon.sprites.front_default;
 
   spriteContainer.appendChild(sprite);
-
-  const likesCounter = document.getElementById(`${pokemon.id}likesCounter`);
-  likesCounter.textContent = '';
 }
 
 function displayLikes(likes) {
-  console.log(likes);
   likes.forEach((like) => {
-    if (like.item_id === 1) {
-      console.log("hi");
-    }
-    /* if (like.item_id === pokemon.id) {
-      document.getElementById(`${pokemon.id}likesCounter`).textContent = like.likes;
-      console.log('hi');
-    } else {
-      document.getElementById(`${pokemon.id}likesCounter`).textContent = 0;
-      console.log(likes);
-    } */
-    for (let i = 0; i < pokemonContainer.children.length; i += 1) {
-      if (like.item_id === pokemon.id) {
-        console.log("hello");
-      }
+    const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
+    if (pokemonLikes) {
+      pokemonLikes.textContent = like.likes;
     }
   });
 }
