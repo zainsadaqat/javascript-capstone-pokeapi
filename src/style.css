@@ -281,6 +281,40 @@ body {
   background-color: var(--main-bg-color);
 }
 
+.total-comments,
+.add-comment-heading {
+  text-align: center;
+  color: #bebebe;
+  margin: 30px 0;
+}
+
+.add-comment-heading {
+  margin-top: 50px;
+}
+
+.all-comments {
+  text-align: center;
+  font-size: 0.85rem;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > * {
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 4px solid black;
+  border-radius: 6px;
+}
+
+.t-center {
+  text-align: center;
+  padding: 1.75em 0.5em;
+}
+
 .likes-box {
   background-color: rgb(249, 238, 96);
   border-radius: 0 0 0 40px;
