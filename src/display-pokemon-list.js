@@ -1,4 +1,7 @@
 /* eslint-disable no-use-before-define */
+
+import addNewLike from './add-new-like.js';
+
 /* eslint-disable no-unused-vars */
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
@@ -13,6 +16,7 @@ const fetchPokemon = async (id) => await fetch(`https://pokeapi.co/api/v2/pokemo
   .then((response) => response.json())
   .then((data) => {
     createPokemon(data);
+    addLikesListener();
     pokemon = data;
     spinner.classList.add('d-none');
   });
@@ -53,7 +57,7 @@ function createPokemon(pokemon) {
       <div class="card-footer">
         <div class="d-flex justify-content-between">
           <div class="name-pokemon d-flex align-items-center ps-3">${pokemon.name}</div>
-          <button type="button" class="gray-dark-circle-heart-button d-flex justify-content-center align-items-center">
+          <button type="button" class="like-btn gray-dark-circle-heart-button d-flex justify-content-center align-items-center" data-pokemon-id=${pokemon.id} id="${pokemon.id}_likeButton">
             <span id="${pokemon.id}_colorHeart" class="white-heart border-5"></span>
           </button>
         </div>
@@ -174,6 +178,19 @@ function displayLikes(likes) {
       colorHeart.classList.remove('white-heart');
       colorHeart.classList.add('red-heart');
     }
+  });
+}
+
+function addLikesListener(data) {
+  const likeButtons = document.querySelectorAll('.like-btn');
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener('click', () => {
+      addNewLike(likeButton.dataset.pokemonId).then(
+        () => {
+          window.location.reload();
+        },
+      );
+    });
   });
 }
 
