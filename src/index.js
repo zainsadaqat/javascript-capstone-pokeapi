@@ -1,7 +1,8 @@
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
-import pokemon from './get-pokemons';
-import getComments from './get-comments';
+import getComments from './get-comments.js';
+import { fetchPokemons } from './display-pokemon-list.js';
+import recievedLikes from './display-likes.js';
 
 const pokeballLogo = document.getElementById('pokeballLogo');
 const allComments = document.querySelector('.all-comments');
@@ -16,8 +17,6 @@ const getAllComments = async () => {
 };
 
 getAllComments();
-import { fetchPokemons } from './display-pokemon-list.js';
-import recievedLikes from './display-likes.js';
 
 const pokemonContainer = document.getElementById('pokemonContainer');
 
