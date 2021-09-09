@@ -6,14 +6,16 @@ const spinner = document.getElementById('spinner');
 const offset = 1;
 const limit = 8;
 
-function fetchPokemon(id) {
-  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      createPokemon(data);
-      spinner.classList.add('d-none');
-    });
-}
+let pokemon;
+
+// eslint-disable-next-line no-return-await
+const fetchPokemon = async (id) => await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  .then((response) => response.json())
+  .then((data) => {
+    createPokemon(data);
+    pokemon = data;
+    spinner.classList.add('d-none');
+  });
 
 function fetchPokemons(offset, limit) {
   spinner.classList.add('d-none');
@@ -52,12 +54,12 @@ function createPokemon(pokemon) {
         <div class="d-flex justify-content-between">
           <div class="name-pokemon d-flex align-items-center ps-3">${pokemon.name}</div>
           <button type="button" class="gray-dark-circle-heart-button d-flex justify-content-center align-items-center">
-            <span class="heart border-5"></span>
+            <span id="${pokemon.id}_colorHeart" class="white-heart border-5"></span>
           </button>
         </div>
         <div class="d-flex justify-content-between mt-3">
           <div class="pokemon-number d-flex align-items-center ps-2 pe-3">#${pokemon.id.toString().padStart(4, 0)}</div>
-          <div class="likes-box d-flex align-items-center ps-3"><span class="pe-2" id="${pokemon.id}likesCounter">5</span>Likes</div>
+          <div class="likes-box d-flex align-items-center ps-3"><span class="pe-2" id="${pokemon.id}_pokemonLikes">0</span>Likes</div>
         </div>
 
         <button type="button" class="Comments-button mt-3" data-bs-toggle="modal" data-bs-target="#commentsModal">
@@ -115,7 +117,18 @@ function createPokemon(pokemon) {
   sprite.src = pokemon.sprites.front_default;
 
   spriteContainer.appendChild(sprite);
-
-  const pokemonId = `${pokemon.id}`;
 }
-export default fetchPokemons;
+
+function displayLikes(likes) {
+  likes.forEach((like) => {
+    const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
+    if (pokemonLikes) {
+      pokemonLikes.textContent = like.likes;
+      const colorHeart = document.getElementById(`${like.item_id}_colorHeart`);
+      colorHeart.classList.remove('white-heart');
+      colorHeart.classList.add('red-heart');
+    }
+  });
+}
+
+export { fetchPokemons, displayLikes };
