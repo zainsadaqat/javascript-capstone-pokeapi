@@ -1,8 +1,7 @@
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
 import { fetchPokemons } from './display-pokemon-list.js';
-import RecievedLikes from './display-likes';
-import recievedLikes from './display-likes';
+import recievedLikes from './display-likes.js';
 
 const pokeballLogo = document.getElementById('pokeballLogo');
 const pokemonContainer = document.getElementById('pokemonContainer');
