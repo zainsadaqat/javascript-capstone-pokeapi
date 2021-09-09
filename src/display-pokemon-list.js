@@ -54,7 +54,7 @@ function createPokemon(pokemon) {
         <div class="d-flex justify-content-between">
           <div class="name-pokemon d-flex align-items-center ps-3">${pokemon.name}</div>
           <button type="button" class="gray-dark-circle-heart-button d-flex justify-content-center align-items-center">
-            <span class="heart border-5"></span>
+            <span id="${pokemon.id}_colorHeart" class="white-heart border-5"></span>
           </button>
         </div>
         <div class="d-flex justify-content-between mt-3">
@@ -124,6 +124,9 @@ function displayLikes(likes) {
     const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
     if (pokemonLikes) {
       pokemonLikes.textContent = like.likes;
+      const colorHeart = document.getElementById(`${like.item_id}_colorHeart`);
+      colorHeart.classList.remove('white-heart');
+      colorHeart.classList.add('red-heart');
     }
   });
 }
