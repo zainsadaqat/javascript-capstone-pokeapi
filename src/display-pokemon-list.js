@@ -6,11 +6,14 @@ const spinner = document.getElementById('spinner');
 const offset = 1;
 const limit = 8;
 
+let pokemon;
+
 // eslint-disable-next-line no-return-await
 const fetchPokemon = async (id) => await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
   .then((response) => response.json())
   .then((data) => {
     createPokemon(data);
+    pokemon = data;
     spinner.classList.add('d-none');
   });
 
@@ -118,4 +121,26 @@ function createPokemon(pokemon) {
   const likesCounter = document.getElementById(`${pokemon.id}likesCounter`);
   likesCounter.textContent = '';
 }
-export default fetchPokemons;
+
+function displayLikes(likes) {
+  console.log(likes);
+  likes.forEach((like) => {
+    if (like.item_id === 1) {
+      console.log("hi");
+    }
+    /* if (like.item_id === pokemon.id) {
+      document.getElementById(`${pokemon.id}likesCounter`).textContent = like.likes;
+      console.log('hi');
+    } else {
+      document.getElementById(`${pokemon.id}likesCounter`).textContent = 0;
+      console.log(likes);
+    } */
+    for (let i = 0; i < pokemonContainer.children.length; i += 1) {
+      if (like.item_id === pokemon.id) {
+        console.log("hello");
+      }
+    }
+  });
+}
+
+export { fetchPokemons, displayLikes };
