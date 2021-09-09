@@ -1,8 +1,21 @@
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
 import pokemon from './get-pokemons';
+import getComments from './get-comments';
 
 const pokeballLogo = document.getElementById('pokeballLogo');
+const allComments = document.querySelector('.all-comments');
+const singleComment = document.createElement('p');
+
+const getAllComments = async () => {
+  const response = await getComments(1);
+  response.forEach((resp) => {
+    singleComment.innerHTML = `${resp.creation_date} ${resp.username}: ${resp.comment}`;
+    allComments.appendChild(singleComment);
+  });
+};
+
+getAllComments();
 
 // add icon to the page
 const link = document.createElement('link');
@@ -15,5 +28,3 @@ img.src = pokeball;
 img.alt = 'Pokeball';
 img.classList.add('pokeball-logo');
 pokeballLogo.appendChild(img);
-
-console.log(pokemon());
