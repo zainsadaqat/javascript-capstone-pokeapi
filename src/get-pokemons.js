@@ -3,5 +3,3 @@ const pokemon = async () => {
   const result = response.json();
   return result;
 };
-
-export default pokemon;

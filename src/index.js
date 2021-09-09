@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
 import { fetchPokemons } from './display-pokemon-list.js';

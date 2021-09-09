@@ -1,8 +1,5 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-return-await */
-/*
-API id edd97Eq6uvObdGmWlx62
-*/
 
 import { displayLikes } from './display-pokemon-list.js';
 
