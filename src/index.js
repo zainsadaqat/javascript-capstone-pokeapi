@@ -19,7 +19,6 @@ getAllComments();
 import { fetchPokemons } from './display-pokemon-list.js';
 import recievedLikes from './display-likes.js';
 
-const pokeballLogo = document.getElementById('pokeballLogo');
 const pokemonContainer = document.getElementById('pokemonContainer');
 
 let offset;
@@ -40,7 +39,7 @@ pokeballLogo.appendChild(img);
 const previous = document.getElementById('previous');
 const next = document.getElementById('next');
 
-fetchPokemons(offset = 1, limit = 8);
+fetchPokemons((offset = 1), (limit = 8));
 
 previous.addEventListener('click', () => {
   if (offset > 1) {
