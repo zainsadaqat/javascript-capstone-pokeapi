@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 /* eslint-disable no-use-before-define */
 
 import addNewLike from './add-new-like.js';
@@ -22,12 +24,13 @@ let pokemon;
     spinner.classList.add('d-none');
   }); */
 
-const fetchPokemons = async () => { await fetch(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=1500`)
-  .then((response) => response.json())
-  .then((data) => {
-    createPokemon(data);
-    spinner.classList.add('d-none');
-  }).then(() => addLikesListener());
+const fetchPokemons = async () => {
+  await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1500')
+    .then((response) => response.json())
+    .then((data) => {
+      createPokemon(data);
+      spinner.classList.add('d-none');
+    }).then(() => addLikesListener());
 };
 
 function indexer(pokedex) {
@@ -191,7 +194,7 @@ function createPokemon(pokedex) {
         </div>
       </div>
       `;
-  
+
       const spriteContainer = document.getElementById(`${pokemon.index}PokemonImageMain`);
       const sprite = document.createElement('img');
       sprite.className = 'pokemon-image';
