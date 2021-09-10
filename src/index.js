@@ -13,7 +13,7 @@ const getAllComments = async () => {
   const response = await getComments(1);
   response.forEach((resp) => {
     singleComment.innerHTML = `${resp.creation_date} ${resp.username}: ${resp.comment}`;
-    allComments.appendChild(singleComment);
+    // allComments.appendChild(singleComment);
   });
 };
 
@@ -36,25 +36,6 @@ img.alt = 'Pokeball';
 img.classList.add('pokeball-logo');
 pokeballLogo.appendChild(img);
 
-const previous = document.getElementById('previous');
-const next = document.getElementById('next');
-
 fetchPokemons((offset = 1), (limit = 8));
-
-previous.addEventListener('click', () => {
-  if (offset > 1) {
-    offset -= 9;
-    pokemonContainer.innerHTML = '';
-    fetchPokemons(offset, limit);
-  }
-});
-
-next.addEventListener('click', () => {
-  if (offset < 889) {
-    offset += 9;
-    pokemonContainer.innerHTML = '';
-    fetchPokemons(offset, limit);
-  }
-});
 
 recievedLikes();

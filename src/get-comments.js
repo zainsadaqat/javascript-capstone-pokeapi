@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const ID = 'sOH39XWa9gMFVPLXHU2G';
 const URL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${ID}/comments`;
 

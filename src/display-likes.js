@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-return-await */
 
