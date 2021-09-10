@@ -2,9 +2,14 @@
 /* eslint-disable no-unused-vars */
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
+import bgImage from './assets/img/pokemon pattern.png';
 import getComments from './get-comments.js';
 import { fetchPokemons } from './display-pokemon-list.js';
 import recievedLikes from './display-likes.js';
+
+const body = document.querySelector('body');
+
+body.style.backgroundImage = `url(${bgImage})`;
 
 const pokeballLogo = document.getElementById('pokeballLogo');
 const allComments = document.querySelector('.all-comments');
@@ -38,5 +43,3 @@ img.classList.add('pokeball-logo');
 pokeballLogo.appendChild(img);
 
 fetchPokemons((offset = 1), (limit = 8));
-
-recievedLikes();

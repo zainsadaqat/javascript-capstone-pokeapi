@@ -1,11 +1,13 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable import/no-cycle */
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 /* eslint-disable no-use-before-define */
 
 import addNewLike from './add-new-like.js';
+import recievedLikes from './display-likes.js';
 
-/* eslint-disable no-unused-vars */
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
 
@@ -33,9 +35,7 @@ function indexer(pokedex) {
 }
 
 function SetPokemonCount(total) {
-  // console.log(total);
   const getNumberAllPokemons = document.getElementById('getNumberAllPokemons');
-  console.log(getNumberAllPokemons);
   getNumberAllPokemons.textContent = total;
 }
 
@@ -91,11 +91,11 @@ function createPokemon(pokedex) {
               <div class="pokemon-number d-flex align-items-center ps-2 pe-3">#${pokemon.index}</div>
               <div class="likes-box d-flex align-items-center ps-3"><span class="pe-2" id="${pokemon.index}_pokemonLikes">0</span>Likes</div>
             </div>
-  
+
             <button type="button" class="Comments-button mt-3" data-bs-toggle="modal" data-bs-target="#commentsModal">
               Comments
             </button>
-  
+
             <div
                     class="modal fade"
                     id="commentsModal"
@@ -190,10 +190,32 @@ function createPokemon(pokedex) {
       const sprite = document.createElement('img');
       sprite.className = 'pokemon-image';
       sprite.alt = 'pokemon-image';
-      sprite.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.index}.png`;
+
+      const imageExists = (imageUrl) => {
+        let ans = 'https://i.pinimg.com/originals/0d/b1/0c/0db10c1dd328a29177abbd8d992a370f.gif';
+        const http = new XMLHttpRequest();
+        http.open('HEAD', imageUrl, false);
+        http.send();
+        if (http.status !== 404) {
+          ans = imageUrl;
+        }
+        return ans;
+      };
+
+      let imagePokemon;
+
+      if (pokemon.index <= 898) {
+        imagePokemon = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.index}.png`;
+      } else {
+        imagePokemon = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.index + 9102}.png`;
+      }
+
+      sprite.src = imageExists(imagePokemon);
 
       spriteContainer.appendChild(sprite);
     });
+
+    recievedLikes();
   };
 
   const previous = document.getElementById('previous');
@@ -205,6 +227,8 @@ function createPokemon(pokedex) {
     if (page > 1) {
       page -= 1;
       displayPage(page);
+      recievedLikes();
+      addLikesListener();
     }
   });
 
@@ -212,6 +236,8 @@ function createPokemon(pokedex) {
     if (page < indexerPokedex.length / 30) {
       page += 1;
       displayPage(page);
+      recievedLikes();
+      addLikesListener();
     }
   });
 }
@@ -228,15 +254,11 @@ function displayLikes(likes) {
   });
 }
 
-function addLikesListener(data) {
+function addLikesListener(page) {
   const likeButtons = document.querySelectorAll('.like-btn');
   likeButtons.forEach((likeButton) => {
     likeButton.addEventListener('click', () => {
-      addNewLike(parseInt(likeButton.dataset.pokemonId, 10)).then(
-        () => {
-          window.location.reload();
-        },
-      );
+      addNewLike(parseInt(likeButton.dataset.pokemonId, 10));
     });
   });
 }
