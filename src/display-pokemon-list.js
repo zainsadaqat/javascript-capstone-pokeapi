@@ -26,7 +26,6 @@ const fetchPokemons = async () => {
 };
 
 function indexer(pokedex) {
-  // console.log(pokedex.results);
   pokedex.results.forEach((pokemon, index) => {
     pokemon.index = index + 1;
   });
@@ -233,7 +232,7 @@ function addLikesListener(data) {
   const likeButtons = document.querySelectorAll('.like-btn');
   likeButtons.forEach((likeButton) => {
     likeButton.addEventListener('click', () => {
-      addNewLike(likeButton.dataset.pokemonId).then(
+      addNewLike(parseInt(likeButton.dataset.pokemonId, 10)).then(
         () => {
           window.location.reload();
         },

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { indexer, SetPokemonCount } from '../src/display-pokemon-list';
+import { indexer, SetPokemonCount } from '../src/display-pokemon-list.js';
 import pokedex from './moke-data-PokeAPI.js';
 
 test('total number of pokemons must be 1118', () => {
