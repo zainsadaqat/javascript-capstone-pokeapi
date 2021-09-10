@@ -9,20 +9,12 @@ import addNewLike from './add-new-like.js';
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
 
+const getNumberAllPokemons = document.getElementById('getNumberAllPokemons');
+
 const offset = 1;
 const limit = 8;
 
 let pokemon;
-
-// eslint-disable-next-line no-return-await
-/* const fetchPokemon = async (id) => await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-  .then((response) => response.json())
-  .then((data) => {
-    createPokemon(data);
-    addLikesListener();
-    pokemon = data;
-    spinner.classList.add('d-none');
-  }); */
 
 const fetchPokemons = async () => {
   await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1500')
@@ -34,25 +26,25 @@ const fetchPokemons = async () => {
 };
 
 function indexer(pokedex) {
+  // console.log(pokedex.results);
   pokedex.results.forEach((pokemon, index) => {
     pokemon.index = index + 1;
   });
   return pokedex.results;
 }
 
-/* function fetchPokemon(offset, limit) {
-  spinner.classList.add('d-none');
-  for (let i = offset; i <= offset + limit; i += 1) {
-    fetchPokemon(i);
-  }
-} */
+function SetPokemonCount(total) {
+  // console.log(total);
+  const getNumberAllPokemons = document.getElementById('getNumberAllPokemons');
+  console.log(getNumberAllPokemons);
+  getNumberAllPokemons.textContent = total;
+}
 
 function createPokemon(pokedex) {
   let page = 1;
   const indexerPokedex = indexer(pokedex);
-  const getNumberAllPokemons = document.getElementById('getNumberAllPokemons');
 
-  getNumberAllPokemons.textContent = indexerPokedex.length;
+  SetPokemonCount(indexerPokedex.length);
 
   const displayPage = (page) => {
     pokemonContainer.innerHTML = '';
@@ -250,4 +242,6 @@ function addLikesListener(data) {
   });
 }
 
-export { fetchPokemons, displayLikes };
+export {
+  fetchPokemons, displayLikes, SetPokemonCount, indexer,
+};
