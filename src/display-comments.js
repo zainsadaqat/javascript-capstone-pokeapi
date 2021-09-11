@@ -2,7 +2,7 @@ const displayComments = (pokemon) => {
   const commentContainer = document.createElement('div');
   commentContainer.classList.add('comment-container');
   commentContainer.innerHTML = `
-          <div class="d-none" id="${pokemon.index}popUpContainer" tabindex="-1" aria-hidden="true">
+          <div class="" id="${pokemon.index}popUpContainer" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header border-bottom border-dark border-5">
