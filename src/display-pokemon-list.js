@@ -8,6 +8,7 @@
 import addNewLike from './add-new-like.js';
 import recievedLikes from './display-likes.js';
 import displayComments from './display-comments.js';
+import getComments, { sendComment } from './comments-handler.js';
 
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
@@ -58,14 +59,19 @@ function createPokemon(pokedex) {
     }).forEach((pokemon) => {
       const showPopUpBtn = document.createElement('button');
       showPopUpBtn.classList.add('Comments-button', 'mt-3');
+      showPopUpBtn.id = 'showPopUpBtn';
       showPopUpBtn.textContent = 'Comments';
-      
+
       showPopUpBtn.addEventListener('click', () => {
-        console.log(pokemon);
+        console.log('hi');
       });
 
+      const consoleLog = () => {
+        console.log('hello');
+      };
+
       pokemonContainer.innerHTML += `
-      <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="col-lg-4 col-md-6 col-sm-12" id="pokedexContainer">
         <div class="card">
           <div class="card-header d-flex border-bottom border-5 border-dark">
             <div class="big-blue-circle me-3 mb-3"></div>
@@ -89,7 +95,6 @@ function createPokemon(pokedex) {
               </div>
             </div>
           </div>
-          <div class="card-footer">
             <div class="d-flex justify-content-between">
               <div class="name-pokemon d-flex align-items-center ps-3">${pokemon.name}</div>
               <button type="button" class="like-btn gray-dark-circle-heart-button d-flex justify-content-center align-items-center" data-pokemon-id=${pokemon.index} id="${pokemon.index}_likeButton">
@@ -101,15 +106,107 @@ function createPokemon(pokedex) {
               <div class="likes-box d-flex align-items-center ps-3"><span class="pe-2" id="${pokemon.index}_pokemonLikes">0</span>Likes</div>
             </div>
 
-            ${showPopUpBtn.outerHTML}
+            <button type="button" class="Comments-button mt-3" data-bs-toggle="modal" data-bs-target="#popUpContainer${pokemon.index}" id="openComments">
+            Comments
+            </button>
 
+            <div class="modal fade rounded-3" tabindex="-1" aria-labelledby="popUpContainerLabel${pokemon.index}" aria-hidden="true" id="popUpContainer${pokemon.index}">
+            <div class="modal-dialog modal-xl rounded-3">
+              <div class="modal-content">
+                <div class="modal-header border-bottom border-dark border-5">
+                  <div class="d-flex">
+                    <div class="big-blue-circle me-3 mb-3"></div>
+                    <div class="red-circle me-2"></div>
+                    <div class="yellow-circle me-2"></div>
+                    <div class="green-circle me-2"></div>
+                  </div>
+                  <div class="d-flex">
+                    <button type="button" class="btn close fs-1 me-4" data-bs-dismiss="modal">X</button>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <div class="d-flex justify-content-center">
+                    <div class="gray-box">
+                      <div class="d-flex justify-content-center">
+                        <div class="small-red-circle m-1"></div>
+                        <div class="small-red-circle m-1"></div>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <div class=" display-green d-flex justify-content-center align-items-center" id="${pokemon.index}PokemonImageComment">
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between px-4">
+                        <div class="medium-red-circle m-1"></div>
+                        <ion-icon name="menu-sharp" class="fs-1"></ion-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="total-comments">Comments (2)</h3>
+                    <section class="all-comments"></section>
+                  </div>
+                  <div>
+                    <h3 class="add-comment-heading">Add a comment</h3>
+                    <div id="commentsForm">
+
+                    <form class="form" id="form" onsubmit="return false">
+                      <input type="hidden" name="pokemonId" value="${pokemon.index}" id="pokemonId">
+                      <input type="text" placeholder="Your name" id="username" />
+                      <textarea name="comment" id="comment" cols="20" rows="10" placeholder="Your insights"></textarea>
+                      <input type="submit" value="Comment" class="btn btn-dark disabled" id="submitComment">
+                    </form>
+
+                    <div class="" id="displayComments">
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       `;
 
+      {/* <form action="#" class="form" id="form">
+        <input type="text" placeholder="Your name" id="username" />
+        <textarea name="comment" id="comment" cols="20" rows="10" placeholder="Your insights"></textarea>
+        <input type="submit" value="Comment" class="btn btn-primary"/>
+      </form> */}
+
+      /* const commentsFormContainer = document.getElementById('commentsForm');
+
+      console.log(commentsFormContainer);
+
+      const formComments = document.createElement('form');
+      formComments.classList.add('form');
+      formComments.id = `form${pokemon.index}`;
+
+      commentsFormContainer.appendChild(formComments);
+
+      const formCommentsInputName = document.createElement('input');
+      formCommentsInputName.type = 'text';
+      formCommentsInputName.placeholder = 'Your name';
+      formCommentsInputName.id = 'username';
+
+      const formCommentsPlaceholder = document.createElement('textarea');
+      formCommentsPlaceholder.placeholder = 'Your insights';
+      formCommentsPlaceholder.id = 'comment';
+      formCommentsPlaceholder.cols = '20';
+      formCommentsPlaceholder.rows = '10';
+
+      const formCommentsInputSubmit = document.createElement('input');
+      formCommentsInputSubmit.type = 'submit';
+      formCommentsInputSubmit.value = 'Comment';
+      formCommentsInputSubmit.classList.add('btn', 'btn-primary');
+
+      formComments.appendChild(formCommentsInputName);
+      formComments.appendChild(formCommentsPlaceholder);
+      formComments.appendChild(formCommentsInputSubmit); */
+
       const spriteContainer = document.getElementById(`${pokemon.index}PokemonImageMain`);
+      const spriteContainerComments = document.getElementById(`${pokemon.index}PokemonImageComment`);
       const sprite = document.createElement('img');
       sprite.className = 'pokemon-image';
       sprite.alt = 'pokemon-image';
@@ -136,6 +233,7 @@ function createPokemon(pokedex) {
       sprite.src = imageExists(imagePokemon);
 
       spriteContainer.appendChild(sprite);
+      spriteContainerComments.appendChild(sprite.cloneNode(true));
     });
 
     recievedLikes();
@@ -146,12 +244,47 @@ function createPokemon(pokedex) {
 
   displayPage(page);
 
+  const updateButtons = () => {
+    pokemonContainer.querySelectorAll('form').forEach((form) => {
+      form.elements['username'].addEventListener('input', () => {
+        if (form.elements['username'].value !== '' && form.elements['comment'].value !== '') {
+          form.elements['submitComment'].classList.remove('disabled');
+        } else {
+          form.elements['submitComment'].classList.add('disabled');
+        }
+      });
+
+      form.elements['comment'].addEventListener('input', () => {
+        if (form.elements['username'].value !== '' && form.elements['comment'].value !== '') {
+          form.elements['submitComment'].classList.remove('disabled');
+        } else {
+          form.elements['submitComment'].classList.add('disabled');
+        }
+      });
+      form.elements['submitComment'].disabled = false;
+      form.elements['submitComment'].addEventListener(('click'), () => {
+        sendComment(form.elements['pokemonId'].value, form.elements['username'].value, form.elements['comment'].value, form.parentNode.childNodes[3]);
+      });
+    });
+
+    pokemonContainer.childNodes.forEach((pokedexContainer) => {
+      pokedexContainer.addEventListener('click', (event) => {
+        if (event.target.id === 'openComments') {
+          getComments(pokedexContainer.querySelector('#pokemonId').value, pokedexContainer.querySelector('#displayComments'));
+        }
+      });
+    });
+  };
+
+  updateButtons();
+
   previous.addEventListener('click', () => {
     if (page > 1) {
       page -= 1;
       displayPage(page);
       recievedLikes();
       addLikesListener();
+      updateButtons();
     }
   });
 
@@ -161,6 +294,7 @@ function createPokemon(pokedex) {
       displayPage(page);
       recievedLikes();
       addLikesListener();
+      updateButtons();
     }
   });
 }

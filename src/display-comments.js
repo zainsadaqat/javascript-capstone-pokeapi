@@ -39,11 +39,15 @@ const displayComments = (pokemon) => {
                   </div>
                   <div>
                     <h3 class="add-comment-heading">Add a comment</h3>
-                    <form action="#" class="form" id="form">
-                      <input type="text" placeholder="Your name" id="username" />
-                      <textarea name="comment" id="comment" cols="20" rows="10" placeholder="Your insights"></textarea>
-                      <input type="submit" value="Comment" class="btn btn-primary"/>
-                    </form>
+
+                    <div id="commentsForm">
+                      <form action="#" class="form" id="form">
+                        <input type="hidden" name="comment" id="comment" placeholder="Add a comment" class="comment-input" value="${pokemon.index}">
+                        <input type="text" placeholder="Your name" id="username" />
+                        <textarea name="comment" id="comment" cols="20" rows="10" placeholder="Your insights"></textarea>
+                        <input type="submit" value="Comment" class="btn btn-primary" onclick="${sendComment()}"/>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
