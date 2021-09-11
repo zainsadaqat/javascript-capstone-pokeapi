@@ -112,7 +112,9 @@ function createPokemon(pokedex) {
                     <div class="green-circle me-2"></div>
                   </div>
                   <div class="d-flex">
-                    <button type="button" class="btn close fs-1 me-4" data-bs-dismiss="modal">X</button>
+                    <button type="button" class="btn close me-3" data-bs-dismiss="modal">
+                      <ion-icon class="fs-close" name="close"></ion-icon>
+                    </button>
                   </div>
                 </div>
                 <div class="modal-body">

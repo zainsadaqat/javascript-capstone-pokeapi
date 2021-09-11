@@ -370,3 +370,7 @@ body {
 .modal-dialog {
   border-radius: 15px;
 }
+
+.fs-close {
+  font-size: 90px !important;
+}
