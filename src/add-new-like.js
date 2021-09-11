@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-return-await */
 const addNewLike = async (itemId) => {
   const pokemonLikes = document.getElementById(`${itemId}_pokemonLikes`);
   pokemonLikes.textContent = parseInt(pokemonLikes.textContent, 10) + 1;

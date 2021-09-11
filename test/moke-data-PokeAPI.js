@@ -1,4 +1,3 @@
-/* eslint-disable quote-props */
 const pokedex = {
   count: 1118,
   next: null,

@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const mockComments = [
   {
     creation_date: '2021-09-08',

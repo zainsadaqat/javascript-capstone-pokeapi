@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
 import bgImage from './assets/img/pokemon pattern.png';
@@ -10,9 +8,6 @@ const body = document.querySelector('body');
 body.style.backgroundImage = `url(${bgImage})`;
 
 const pokeballLogo = document.getElementById('pokeballLogo');
-
-let offset;
-let limit;
 
 // add icon to the page
 const link = document.createElement('link');
@@ -26,6 +21,4 @@ img.alt = 'Pokeball';
 img.classList.add('pokeball-logo');
 pokeballLogo.appendChild(img);
 
-fetchPokemons((offset = 1), (limit = 8));
-
-const btnConsole = document.getElementById('showPopUpBtn');
+fetchPokemons();

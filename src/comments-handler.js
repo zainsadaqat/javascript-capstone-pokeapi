@@ -1,6 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable arrow-body-style */
-
 export const displaycomments = (comments) => {
   let eachComment = `<h2 class="mb-2"><span id="totalComments">${comments.length}</span> Comments</h2>
   <table class="table table-dark table-striped">
@@ -52,14 +49,9 @@ export const sendComment = async (itemId, username, comment, commentsContainer) 
       comment,
     }),
     redirect: 'follow',
-  }).then((res) => {
-    return res.text();
-  }).then(() => {
+  }).then((res) => res.text()).then(() => {
     getComments(itemId, commentsContainer);
   });
 };
-
-/* const displayComments = (comments) => {
-   */
 
 export default getComments;
