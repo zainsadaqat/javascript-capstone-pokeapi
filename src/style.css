@@ -383,3 +383,7 @@ body {
 .fs-close {
   font-size: 85px !important;
 }
+
+.pokemon-img-not-found {
+  width: 40%;
+}
