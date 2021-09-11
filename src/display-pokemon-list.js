@@ -1,6 +1,6 @@
 import addNewLike from './add-new-like.js';
 import getComments, { sendComment } from './comments-handler.js';
-import missingNo from './assets/img/missingNo.jpg';
+import missingNo from './assets/img/missingNo.png';
 
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
