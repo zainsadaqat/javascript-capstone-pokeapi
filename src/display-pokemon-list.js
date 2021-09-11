@@ -1,5 +1,6 @@
 import addNewLike from './add-new-like.js';
 import getComments, { sendComment } from './comments-handler.js';
+import missingNo from './assets/img/missingNo.jpg';
 
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
@@ -169,7 +170,7 @@ function createPokemon(pokedex) {
       sprite.alt = 'pokemon-image';
 
       const imageExists = (imageUrl) => {
-        let ans = 'https://i.pinimg.com/originals/0d/b1/0c/0db10c1dd328a29177abbd8d992a370f.gif';
+        let ans = missingNo;
         const http = new XMLHttpRequest();
         http.open('HEAD', imageUrl, false);
         http.send();
