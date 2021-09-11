@@ -1,9 +1,4 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable import/no-cycle */
-/* eslint-disable no-unused-vars */
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
-/* eslint-disable no-use-before-define */
 
 import addNewLike from './add-new-like.js';
 import recievedLikes from './display-likes.js';
@@ -12,27 +7,20 @@ import getComments, { sendComment } from './comments-handler.js';
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
 
-const getNumberAllPokemons = document.getElementById('getNumberAllPokemons');
-
-const offset = 1;
-const limit = 8;
-
-let pokemon;
-
-const fetchPokemons = async () => {
-  await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1500')
-    .then((response) => response.json())
-    .then((data) => {
-      createPokemon(data);
-      spinner.classList.add('d-none');
-    }).then(() => addLikesListener());
-};
-
 function indexer(pokedex) {
   pokedex.results.forEach((pokemon, index) => {
     pokemon.index = index + 1;
   });
   return pokedex.results;
+}
+
+function addLikesListener() {
+  const likeButtons = document.querySelectorAll('.like-btn');
+  likeButtons.forEach((likeButton) => {
+    likeButton.addEventListener('click', () => {
+      addNewLike(parseInt(likeButton.dataset.pokemonId, 10));
+    });
+  });
 }
 
 function SetPokemonCount(total) {
@@ -55,6 +43,7 @@ function createPokemon(pokedex) {
       if (i >= start && i < end) {
         return item;
       }
+      return false;
     }).forEach((pokemon) => {
       const showPopUpBtn = document.createElement('button');
       showPopUpBtn.classList.add('Comments-button', 'mt-3');
@@ -267,14 +256,14 @@ function displayLikes(likes) {
   });
 }
 
-function addLikesListener(page) {
-  const likeButtons = document.querySelectorAll('.like-btn');
-  likeButtons.forEach((likeButton) => {
-    likeButton.addEventListener('click', () => {
-      addNewLike(parseInt(likeButton.dataset.pokemonId, 10));
-    });
-  });
-}
+const fetchPokemons = async () => {
+  await fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1500')
+    .then((response) => response.json())
+    .then((data) => {
+      createPokemon(data);
+      spinner.classList.add('d-none');
+    }).then(() => addLikesListener());
+};
 
 export {
   fetchPokemons, displayLikes, SetPokemonCount, indexer,
