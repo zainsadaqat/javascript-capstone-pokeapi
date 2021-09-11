@@ -368,5 +368,5 @@ body {
 }
 
 .modal-dialog {
-  rounded: 15px;
+  border-radius: 15px;
 }

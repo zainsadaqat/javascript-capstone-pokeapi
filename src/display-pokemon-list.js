@@ -7,7 +7,6 @@
 
 import addNewLike from './add-new-like.js';
 import recievedLikes from './display-likes.js';
-import displayComments from './display-comments.js';
 import getComments, { sendComment } from './comments-handler.js';
 
 const pokemonContainer = document.getElementById('pokemonContainer');
@@ -61,14 +60,6 @@ function createPokemon(pokedex) {
       showPopUpBtn.classList.add('Comments-button', 'mt-3');
       showPopUpBtn.id = 'showPopUpBtn';
       showPopUpBtn.textContent = 'Comments';
-
-      showPopUpBtn.addEventListener('click', () => {
-        console.log('hi');
-      });
-
-      const consoleLog = () => {
-        console.log('hello');
-      };
 
       pokemonContainer.innerHTML += `
       <div class="col-lg-4 col-md-6 col-sm-12" id="pokedexContainer">
@@ -156,7 +147,7 @@ function createPokemon(pokedex) {
                       <input type="submit" value="Comment" class="btn btn-dark disabled" id="submitComment">
                     </form>
 
-                    <div class="" id="displayComments">
+                    <div class="d-flex flex-column justify-content-center align-items-center" id="displayComments">
                     </div>
 
                     </div>
@@ -168,42 +159,6 @@ function createPokemon(pokedex) {
         </div>
       </div>
       `;
-
-      {/* <form action="#" class="form" id="form">
-        <input type="text" placeholder="Your name" id="username" />
-        <textarea name="comment" id="comment" cols="20" rows="10" placeholder="Your insights"></textarea>
-        <input type="submit" value="Comment" class="btn btn-primary"/>
-      </form> */}
-
-      /* const commentsFormContainer = document.getElementById('commentsForm');
-
-      console.log(commentsFormContainer);
-
-      const formComments = document.createElement('form');
-      formComments.classList.add('form');
-      formComments.id = `form${pokemon.index}`;
-
-      commentsFormContainer.appendChild(formComments);
-
-      const formCommentsInputName = document.createElement('input');
-      formCommentsInputName.type = 'text';
-      formCommentsInputName.placeholder = 'Your name';
-      formCommentsInputName.id = 'username';
-
-      const formCommentsPlaceholder = document.createElement('textarea');
-      formCommentsPlaceholder.placeholder = 'Your insights';
-      formCommentsPlaceholder.id = 'comment';
-      formCommentsPlaceholder.cols = '20';
-      formCommentsPlaceholder.rows = '10';
-
-      const formCommentsInputSubmit = document.createElement('input');
-      formCommentsInputSubmit.type = 'submit';
-      formCommentsInputSubmit.value = 'Comment';
-      formCommentsInputSubmit.classList.add('btn', 'btn-primary');
-
-      formComments.appendChild(formCommentsInputName);
-      formComments.appendChild(formCommentsPlaceholder);
-      formComments.appendChild(formCommentsInputSubmit); */
 
       const spriteContainer = document.getElementById(`${pokemon.index}PokemonImageMain`);
       const spriteContainerComments = document.getElementById(`${pokemon.index}PokemonImageComment`);
@@ -246,24 +201,27 @@ function createPokemon(pokedex) {
 
   const updateButtons = () => {
     pokemonContainer.querySelectorAll('form').forEach((form) => {
-      form.elements['username'].addEventListener('input', () => {
-        if (form.elements['username'].value !== '' && form.elements['comment'].value !== '') {
-          form.elements['submitComment'].classList.remove('disabled');
+      form.elements.username.addEventListener('input', () => {
+        if (form.elements.username.value !== '' && form.elements.comment.value !== '') {
+          form.elements.submitComment.classList.remove('disabled');
         } else {
-          form.elements['submitComment'].classList.add('disabled');
+          form.elements.submitComment.classList.add('disabled');
         }
       });
 
-      form.elements['comment'].addEventListener('input', () => {
-        if (form.elements['username'].value !== '' && form.elements['comment'].value !== '') {
-          form.elements['submitComment'].classList.remove('disabled');
+      form.elements.comment.addEventListener('input', () => {
+        if (form.elements.username.value !== '' && form.elements.comment.value !== '') {
+          form.elements.submitComment.classList.remove('disabled');
         } else {
-          form.elements['submitComment'].classList.add('disabled');
+          form.elements.submitComment.classList.add('disabled');
         }
       });
-      form.elements['submitComment'].disabled = false;
-      form.elements['submitComment'].addEventListener(('click'), () => {
-        sendComment(form.elements['pokemonId'].value, form.elements['username'].value, form.elements['comment'].value, form.parentNode.childNodes[3]);
+      form.elements.submitComment.disabled = false;
+      form.elements.submitComment.addEventListener(('click'), () => {
+        sendComment(form.elements.pokemonId.value,
+          form.elements.username.value,
+          form.elements.comment.value,
+          form.parentNode.childNodes[3]);
       });
     });
 

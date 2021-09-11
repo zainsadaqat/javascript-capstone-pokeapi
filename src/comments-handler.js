@@ -1,10 +1,9 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable arrow-body-style */
-const ID = 'sOH39XWa9gMFVPLXHU2G';
-const URL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${ID}/comments`;
 
-const displaycomments = (comments) => {
-  let eachComment = `<table class="table table-dark table-striped">
+export const displaycomments = (comments) => {
+  let eachComment = `<h2 class="mb-2"><span id="totalComments">${comments.length}</span> Comments</h2>
+  <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -30,15 +29,15 @@ const displaycomments = (comments) => {
   </table>`;
   return eachComment;
 };
-export const getComments = async (itemId, commentsContainer) => {
+const getComments = async (itemId, commentsContainer) => {
   const requestOptions = {
     method: 'GET',
     redirect: 'follow',
   };
 
   await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sOH39XWa9gMFVPLXHU2G/comments?item_id=${itemId}`, requestOptions)
-    .then(response => response.text())
-    .then(result => {
+    .then((response) => response.text())
+    .then((result) => {
       commentsContainer.innerHTML = displaycomments(JSON.parse(result));
     });
 };
