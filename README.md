@@ -5,6 +5,7 @@
 ![screenshot](./screenshot_1.png)
 ![screenshot](./screenshot_2.png)
 ![screenshot](./screenshot_3.png)
+![screenshot](./screenshot_4.png)
 
 ## Built With
 
@@ -14,7 +15,7 @@
 - ESLint
 ## Live Demo
 
-[Live Demo Link](https://raw.githack.com/aristides1000/Pokedex-javascript-capstone/completion-activities-alone/dist/index.html)
+[Live Demo Link](https://raw.githack.com/zainsadaqat/javascript-capstone-pokeapi/add-tests-for-comments-counter/dist/index.html)
 
 
 ## Getting Started
