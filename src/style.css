@@ -24,10 +24,24 @@
   --main-bg-color: #fe0065;
 }
 
+@keyframes backgroundPositionBody {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 40% 10%;
+  }
+}
+
 body {
   font-family: 'pokemon-classic', sans-serif;
-  background-color: var(--main-bg-color);
   min-height: 100vh;
+  animation-duration: 20s;
+  animation-name: backgroundPositionBody;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  transition-timing-function: linear;
 }
 
 .nav-link {
@@ -283,15 +297,9 @@ body {
   background-color: var(--main-bg-color);
 }
 
-.total-comments,
-.add-comment-heading {
-  text-align: center;
-  color: #bebebe;
-  margin: 30px 0;
-}
-
 .add-comment-heading {
   margin-top: 50px;
+  text-align: center;
 }
 
 .all-comments {
