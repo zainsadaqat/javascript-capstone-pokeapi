@@ -18,7 +18,7 @@
 [Live Demo Link](https://rawcdn.githack.com/zainsadaqat/javascript-capstone-pokeapi/9c23e92fb394f561100659025d7f10774130146d/dist/index.html)
 
 ## Video
-[Explaining Video Link](https://www.youtube.com/watch?v=KcLVtAeyLZk&ab_channel=aristidesjosemolinaperez)
+[Explaining Video Link](https://www.youtube.com/watch?v=eNB1iGhPN7Y&ab_channel=aristidesjosemolinaperez)
 
 
 ## Getting Started
