@@ -135,10 +135,6 @@ function createPokemon(pokedex) {
                     </div>
                   </div>
                   <div>
-                    <h3 class="total-comments">Comments (2)</h3>
-                    <section class="all-comments"></section>
-                  </div>
-                  <div>
                     <h3 class="add-comment-heading">Add a comment</h3>
                     <div id="commentsForm">
 
