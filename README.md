@@ -70,7 +70,7 @@ To make this repository working in your local machine you need only a browser.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/aristides1000/Pokedex-javascript-capstone/issues).
+Feel free to check the [issues page](https://github.com/zainsadaqat/javascript-capstone-pokeapi/issues).
 
 
 ## Show your support
