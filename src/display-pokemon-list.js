@@ -223,7 +223,11 @@ function createPokemon(pokedex) {
         sendComment(form.elements.pokemonId.value,
           form.elements.username.value,
           form.elements.comment.value,
-          form.parentNode.childNodes[3]);
+          form.parentNode.childNodes[3]).then(() => {
+          form.elements.username.value = '';
+          form.elements.comment.value = '';
+          form.elements.submitComment.classList.add('disabled');
+        });
       });
     });
 

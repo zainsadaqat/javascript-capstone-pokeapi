@@ -37,6 +37,7 @@
 body {
   font-family: 'pokemon-classic', sans-serif;
   min-height: 100vh;
+  background-size: 25%;
   animation-duration: 20s;
   animation-name: backgroundPositionBody;
   animation-iteration-count: infinite;

@@ -1,6 +1,6 @@
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
-import bgImage from './assets/img/pokemon pattern.png';
+import bgImage from './assets/img/pokemonPattern.jpg';
 import { fetchPokemons } from './display-pokemon-list.js';
 
 const body = document.querySelector('body');
