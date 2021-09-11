@@ -27,12 +27,14 @@
 body {
   font-family: 'pokemon-classic', sans-serif;
   background-color: var(--main-bg-color);
+  min-height: 100vh;
 }
 
 .nav-link {
   font-family: 'pokemon-solid', sans-serif;
   font-size: 18px;
   letter-spacing: 4px;
+  color: black !important;
 }
 
 .pokeball-logo {
@@ -332,9 +334,7 @@ body {
 }
 
 .spinner-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  min-height: 640px;
   transform: translate(-50%, -50%);
 }
 
@@ -343,4 +343,30 @@ body {
   border: solid 5px #000;
   background-color: #424242;
   color: white;
+}
+
+.nav-item {
+  background-color: var(--main-bg-color);
+  border: solid 5px #000;
+}
+
+.at {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.comment-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-dialog {
+  border-radius: 15px;
 }

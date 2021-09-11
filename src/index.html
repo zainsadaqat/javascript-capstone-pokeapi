@@ -18,15 +18,15 @@
           <a class="navbar-brand" id="pokeballLogo" href="#"> </a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item px-5">
+              <li class="nav-item mx-5 p-2 rounded-3">
                 <a class="nav-link active" aria-current="page" href="#"
                   >Pokemons(<span id="getNumberAllPokemons"></span>)</a
                 >
               </li>
-              <li class="nav-item">
+              <li class="nav-item p-2 rounded-3">
                 <a class="nav-link" href="#">Types</a>
               </li>
-              <li class="nav-item px-5">
+              <li class="nav-item mx-5 p-2 rounded-3">
                 <a class="nav-link" href="#">Locations</a>
               </li>
             </ul>
@@ -38,22 +38,22 @@
     <div class="row" id="pokemonContainer">
     </div>
 
+    <div class="row spinner-center" id="spinner">
+      <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
     <nav class="pagination d-flex justify-content-center">
       <ul class="pagination">
         <li id="previous" class="page-item"><a class="page-link" href="#">Previous</a></li>
         <li id="next" class="page-item"><a class="page-link" href="#">Next</a></li>
       </ul>
     </nav>
-
-    <div class="row spinner-center" id="spinner">
-      <div class="spinner-border text-light" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
   </main>
     <footer class="bg-light">
       <p class="t-center">
-        Created by Arístides Molina and Zain Sadaqat under MIT license
+        Created by Arístides Molina, aristides1000<span class="at">@</span>gmail.com under CC license
       </p>
     </footer>
 

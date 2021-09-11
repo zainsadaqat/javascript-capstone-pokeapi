@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+/* eslint-disable linebreak-style */
 
 import { indexer, SetPokemonCount } from '../src/display-pokemon-list.js';
 import pokedex from './moke-data-PokeAPI.js';

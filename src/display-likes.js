@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-return-await */
 
