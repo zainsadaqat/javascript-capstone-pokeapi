@@ -3,18 +3,13 @@
 import './style.css';
 import pokeball from './assets/img/pokeball-logo.png';
 import bgImage from './assets/img/pokemon pattern.png';
-import getComments from './comments-handler.js';
 import { fetchPokemons } from './display-pokemon-list.js';
-import recievedLikes from './display-likes.js';
 
 const body = document.querySelector('body');
 
 body.style.backgroundImage = `url(${bgImage})`;
 
 const pokeballLogo = document.getElementById('pokeballLogo');
-const allComments = document.querySelector('.all-comments');
-const singleComment = document.createElement('p');
-const pokemonContainer = document.getElementById('pokemonContainer');
 
 let offset;
 let limit;

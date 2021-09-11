@@ -1,7 +1,4 @@
-/* eslint-disable import/no-cycle */
-
 import addNewLike from './add-new-like.js';
-import recievedLikes from './display-likes.js';
 import getComments, { sendComment } from './comments-handler.js';
 
 const pokemonContainer = document.getElementById('pokemonContainer');
@@ -22,6 +19,24 @@ function addLikesListener() {
     });
   });
 }
+
+function displayLikes(likes) {
+  likes.forEach((like) => {
+    const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
+    if (pokemonLikes) {
+      pokemonLikes.textContent = like.likes;
+      const colorHeart = document.getElementById(`${like.item_id}_colorHeart`);
+      colorHeart.classList.remove('white-heart');
+      colorHeart.classList.add('red-heart');
+    }
+  });
+}
+
+const recievedLikes = () => fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/euJcQ410fgo2CbYVuqO8/likes/', {
+  method: 'GET',
+})
+  .then((res) => res.json())
+  .then((json) => displayLikes(json));
 
 function SetPokemonCount(total) {
   const getNumberAllPokemons = document.getElementById('getNumberAllPokemons');
@@ -240,18 +255,6 @@ function createPokemon(pokedex) {
       recievedLikes();
       addLikesListener();
       updateButtons();
-    }
-  });
-}
-
-function displayLikes(likes) {
-  likes.forEach((like) => {
-    const pokemonLikes = document.getElementById(`${like.item_id}_pokemonLikes`);
-    if (pokemonLikes) {
-      pokemonLikes.textContent = like.likes;
-      const colorHeart = document.getElementById(`${like.item_id}_colorHeart`);
-      colorHeart.classList.remove('white-heart');
-      colorHeart.classList.add('red-heart');
     }
   });
 }
