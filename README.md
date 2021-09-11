@@ -2,10 +2,10 @@
 # Pokedex Javascript Capstone Project
 
 > This is a JavaScript project in which a user can see a list of all existing Pokémon and can add likes to their favorite Pokémon, this application was made with the API service called PokeAPI.
-![screenshot](./screenshot_1.png)
-![screenshot](./screenshot_2.png)
-![screenshot](./screenshot_3.png)
-![screenshot](./screenshot_4.png)
+![screenshot](./1_screenshot.png)
+![screenshot](./2_screenshot.png)
+![screenshot](./3_screenshot.png)
+![screenshot](./4_screenshot.png)
 
 ## Built With
 
