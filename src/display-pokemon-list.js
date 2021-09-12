@@ -2,7 +2,6 @@ import addNewLike from './add-new-like.js';
 import getComments, { sendComment } from './comments-handler.js';
 import missingNo from './assets/img/missingNo.png';
 
-missingNo.classList.add('pokemon-img-not-found');
 const pokemonContainer = document.getElementById('pokemonContainer');
 const spinner = document.getElementById('spinner');
 
@@ -177,6 +176,9 @@ function createPokemon(pokedex) {
         http.send();
         if (http.status !== 404) {
           ans = imageUrl;
+        }
+        if (ans === missingNo) {
+          sprite.className = 'pokemon-img-not-found';
         }
         return ans;
       };
