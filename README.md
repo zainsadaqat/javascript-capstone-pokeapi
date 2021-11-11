@@ -69,6 +69,12 @@ To make this repository working in your local machine you need only a browser.
 - Twitter: [@aristides_1000](https://twitter.com/aristides_1000)
 - Linkedin: [Aristides Jose Molina Perez](https://www.linkedin.com/in/aristides-molina/)
 
+👤 **Zain Sadaqat**
+
+- Github: [@zainsadaqat](https://github.com/zainsadaqat)
+- Twitter: [@zain_sadaqat](https://twitter.com/zain_sadaqat)
+- Linkedin: [zain-sadaqat](https://www.linkedin.com/in/zain-sadaqat/)
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
